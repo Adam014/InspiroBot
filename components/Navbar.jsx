@@ -45,8 +45,8 @@ const Navbar = () => {
             <Link href="/profile">
               <Image 
                 src={session?.user.image}
-                width={37}
-                height={37}
+                width={50}
+                height={50}
                 className='rounded-full'
                 alt='profile'
               />
