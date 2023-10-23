@@ -6,20 +6,19 @@ import { useEffect, useState } from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 
 const Navbar = () => {
-  const isUserLoggedIn = true;
+  const {data: session } = useSession();
 
-  
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [providers, setProviders] = useState(null);
 
   // async - await func for getting the providers
   useEffect(() => {
-    const setProviders = async () => {
+    const setUpProviders = async () => {
       const response = await getProviders();
 
       setProviders(response)
     }
-    setProviders();
+    setUpProviders();
   }, [])
 
   return (
@@ -36,7 +35,7 @@ const Navbar = () => {
 
       {/* Desktop nav */}
       <div className='sm:flex hidden'>
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className='flex gap-3 md:gap-5'>
             <Link href="/create-prompt" className='black_btn'>
               Create post
@@ -55,20 +54,26 @@ const Navbar = () => {
           </div>
         ): (
           <>
-            {providers && 
-              Object.values(providers).map((provider) => {
-                <button type='button' key={provider.name} onClick={() => signIn(provider.id)} className='black_btn'>
-                  Sign In
-                </button>
-              })
-            }
-          </>
+              {providers &&
+                Object.values(providers).map((provider) => (
+                  <button
+                    type='button'
+                    key={provider.name}
+                    onClick={() => {
+                      signIn(provider.id);
+                    }}
+                    className='black_btn'
+                  >
+                    Sign in
+                  </button>
+                ))}
+            </>
         )}
       </div>
 
       {/* Mobile nav */}
       <div className='sm:hidden flex relative'>
-        {isUserLoggedIn ? (
+        {session?.user ? (
             <div className='flex'>
               <Image 
                   src="/assets/images/logo.svg"
@@ -98,13 +103,19 @@ const Navbar = () => {
             </div>
         ) : (
           <>
-            {providers && 
-              Object.values(providers).map((provider) => {
-                <button type='button' key={provider.name} onClick={() => signIn(provider.id)} className='black_btn'>
-                  Sign In
+            {providers &&
+              Object.values(providers).map((provider) => (
+                <button
+                  type='button'
+                  key={provider.name}
+                  onClick={() => {
+                    signIn(provider.id);
+                  }}
+                  className='black_btn'
+                >
+                  Sign in
                 </button>
-              })
-            }
+              ))}
           </>
         )}
       </div>
