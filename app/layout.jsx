@@ -1,4 +1,6 @@
 import '@styles/globals.css';
+import Navbar from '@components/Navbar';
+import Provider from '@components/Provider';
 
 export const metadata = {
     title: 'InspiroBot',
@@ -7,16 +9,18 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en">
-        <body>
-            <div className='main'>
-                <div className='gradient'></div>
-            </div>
-            <main>
-                {children}
-            </main>
-        </body>
-    </html>
+  <html lang='en'>
+    <body>
+        <div className='main'>
+          <div className='gradient' />
+        </div>
+
+        <main className='app'>
+          <Navbar />
+          {children}
+        </main>
+    </body>
+  </html>
   )
 }
 
