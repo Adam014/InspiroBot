@@ -40,7 +40,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           <Link href="/" className="text-gray-500 text-sm">
             Cancel
           </Link>
-          <button type="submit" disabled={submitting} className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"> 
+          <button type="submit" disabled={submitting} className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white hover:bg-secondary-yellow"> 
               {submitting ? `${type}...` : type}
           </button>
         </div>

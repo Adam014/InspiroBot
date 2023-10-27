@@ -13,6 +13,7 @@ module.exports = {
       },
       colors: {
         'primary-orange': '#FF5722',
+        'secondary-yellow': '#f59e0b',
       }
     },
   },

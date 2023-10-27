@@ -9,7 +9,7 @@ const UserSchema = new Schema({
   username: {
     type: String,
     required: [true, 'Username is required!'],
-    match: [/^[\p{L}0-9._-“”]{8,20}$/, "Username invalid, it should contain 8-20 alphanumeric letters and be unique!"]
+    match: [/^[\p{L}0-9._-]{8,20}$/, "Username invalid, it should contain 8-30 alphanumeric letters and be unique!"]
   },
   image: {
     type: String,
