@@ -6,7 +6,13 @@ import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
 const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
-  const [copied, setSopied] = useState("");
+  const [copied, setCopied] = useState("");
+
+  const handleCopy = () => {
+    setCopied(post.prompt);
+    navigator.clipboard.writeText(post.prompt);  
+    setTimeout(() => setCopied(""), 3000);
+  }
 
   return (
     <div className="prompt_card">
@@ -20,7 +26,7 @@ const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
           <p className="font-inter text-sm text-gray-500">{post.creator.email}</p>
         </div>
 
-        <div className="copy_btn" onClick={() => {}}>
+        <div className="copy_btn" onClick={() => handleCopy()}>
           <Image 
             src={copied === post.prompt
               ? '/assets/icons/tick.svg'
