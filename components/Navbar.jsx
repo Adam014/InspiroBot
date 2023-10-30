@@ -35,11 +35,11 @@ const Navbar = () => {
 
       {/* Desktop nav */}
       <div className='sm:flex hidden'>
-        <Link href="/create-prompt" className='black_btn mr-5'>
-          Create post
-        </Link>
         {session?.user ? (
           <div className='flex gap-3 md:gap-5'>
+            <Link href="/create-prompt" className='black_btn mr-5'>
+              Create post
+            </Link>
             <button type='button' onClick={signOut} className='outline_btn'>Sign Out</button>
 
             <Link href="/profile">
