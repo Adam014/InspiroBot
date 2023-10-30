@@ -12,6 +12,16 @@ const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
 
   const [copied, setCopied] = useState("");
 
+  const handleProfileClick = () => {
+    if (post.creator?._id === session?.user.id) return router.push("/profile");
+
+    if(post.creator?.username === undefined){
+      return new Response("This user doesnt exists!", { status: 404 });
+    } 
+
+    router.push(`/profile/${post.creator?._id}?name=${post.creator?.username}`);
+  };
+
   const handleCopy = () => {
     setCopied(post.prompt);
     navigator.clipboard.writeText(post.prompt);  
@@ -21,7 +31,7 @@ const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
+        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer" onClick={handleProfileClick}>
           <Image src={post.creator?.image != undefined ? post.creator.image : "/assets/images/default-user.png"} alt="user_image" width={40} height={40} className="rounded_full object-contain" />
         </div>
 
