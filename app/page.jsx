@@ -14,7 +14,7 @@ const Home = () => {
       </p>
       
       {/* showing the feed */}
-      {session?.user.id !== undefined ? <Feed /> : "You are not logged in!"}
+      {session?.user.id !== undefined ? <Feed /> : <p className='desc blue_gradient'>You are not logged in!</p>}
   
     </section>
   )
