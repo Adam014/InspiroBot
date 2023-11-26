@@ -12,6 +12,7 @@ const Provider = ({ children, session }) => {
   return (
     <SessionProvider session={session}>
       <AnimatedCursor />
+
       {children}
     </SessionProvider>
   )
