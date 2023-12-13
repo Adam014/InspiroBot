@@ -17,7 +17,7 @@ const Home = () => {
       {/* showing the feed */}
       {session?.user.id !== undefined ? <Feed /> : <p className='blue_gradient font-bold mt-20'>You are not logged in!</p>}
       <div className="fixed bottom-0 p-5 z-50 left-0">
-        <GitHubButton href="https://github.com/buttons/github-buttons" data-color-scheme="no-preference: dark_dimmed; light: dark_dimmed; dark: dark_dimmed;" data-size="large" data-show-count="true" aria-label="Star buttons/github-buttons on GitHub">Star this project on GitHub</GitHubButton>
+        <GitHubButton href="https://github.com/Adam014/InspiroBot" data-color-scheme="no-preference: dark_dimmed; light: dark_dimmed; dark: dark_dimmed;" data-size="large" data-show-count="true" aria-label="Star buttons/github-buttons on GitHub">Star this project on GitHub</GitHubButton>
       </div>
     </section>
   )
